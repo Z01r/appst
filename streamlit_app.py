@@ -34,7 +34,7 @@ st.sidebar.header("Параметры квартиры")
 input_data = {
     "Комнаты": st.sidebar.number_input("Количество комнат", value=1, step=1),
     "Этаж": st.sidebar.number_input("Этаж", value=1, step=1),
-    "Площадь": st.sidebar.number_input("Площадь (кв.м)", value=50, step=1),
+    "Площадь": st.sidebar.number_input("Площадь (м²)", value=50, step=1),
     "Тип": st.sidebar.selectbox("Тип", label_encoder["Тип"].values()),
     "Состояние": st.sidebar.selectbox("Состояние", label_encoder["Состояние"].values()),
     "Ремонт": st.sidebar.selectbox("Ремонт", label_encoder["Ремонт"].values()),
@@ -47,4 +47,4 @@ input_df = prepare_input(input_df, label_encoder)
 
 if st.button("Рассчитать стоимость"):
     prediction = model.predict(input_df)
-    st.subheader(f"Предполагаемая стоимость квартиры: {prediction[0].round(0):,.2f} сомони")
+    st.subheader(f"Предполагаемая стоимость квартиры: {str(prediction[0].round(0))[:-2]:,.2f} сомони")
