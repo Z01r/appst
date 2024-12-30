@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from catboost import CatBoostRegressor
 
-
+st.set_page_config(layout="wide", page_title="Мобильное приложение", page_icon="📱")
 @st.cache_resource
 def load_model():
    
