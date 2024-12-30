@@ -47,4 +47,4 @@ input_df = prepare_input(input_df, label_encoder)
 
 if st.button("Рассчитать стоимость"):
     prediction = model.predict(input_df)
-    st.subheader(f"Предполагаемая стоимость квартиры: {prediction[0]:,.2f} сомони")
+    st.subheader(f"Предполагаемая стоимость квартиры: {prediction[0].round(0):,.2f} сомони")
