@@ -27,7 +27,8 @@ model, label_encoder = load_model()
 # Преобразование пользовательского ввода
 def prepare_input(data, label_encoder):
     for column, mapping in label_encoder.items():
-        data[column] = mapping.get(data[column], -1)
+        if column in data.columns:
+            data[column] = data[column].map(mapping).fillna(-1).astype(int)
     return data
 try:
 # Заголовок приложения
