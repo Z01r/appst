@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from catboost import CatBoostRegressor
 
-st.set_page_config(layout="wide", page_title="Мобильное приложение", page_icon="📱")
+
 @st.cache_resource
 def load_model():
    
@@ -47,4 +47,4 @@ input_df = prepare_input(input_df, label_encoder)
 
 if st.button("Рассчитать стоимость"):
     prediction = model.predict(input_df)
-    st.subheader(f"Предполагаемая стоимость квартиры: {str(prediction[0].round(0))[:-2]:,.2f} сомони")
+    st.subheader(f"Предполагаемая стоимость квартиры: {prediction[0].round(1):,.2f} сомони")
