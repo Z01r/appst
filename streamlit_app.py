@@ -30,7 +30,6 @@ def prepare_input(data, label_encoder):
         if column in data.columns:
             data[column] = data[column].map(mapping).fillna(-1).astype(int)
     return data
-try:
 # Заголовок приложения
 st.title("Калькулятор стоимости квартиры")
 
@@ -53,5 +52,3 @@ input_df = prepare_input(input_df, label_encoder)
 if st.button("Рассчитать стоимость"):
     prediction = model.predict(input_df)
     st.subheader(f"Предполагаемая стоимость квартиры: {prediction[0]:,.2f} руб.")
-except Exception as e:
-    st.error(f"Произошла ошибка: {str(e)}")
